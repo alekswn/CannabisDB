@@ -1,2 +1,2 @@
 # CannabisDB
-A distributed hopefully consistent k-v storage
+A hopefully consistent k-v storage

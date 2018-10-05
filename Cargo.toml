@@ -1,0 +1,17 @@
+[package]
+name = "CannabisDB"
+version = "0.0.0"
+authors = ["Alexey Novikov <alexey@novikov.io>"]
+
+[dependencies]
+clap="*"
+futures="*"
+futures-cpupool="*"
+tokio-core="*"
+tokio-io="*"
+tokio="*"
+
+[[bin]]
+name = "server"
+path = "src/server.rs"
+
