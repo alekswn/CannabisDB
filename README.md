@@ -1,2 +1,3 @@
 # CannabisDB
-A hopefully consistent k-v storage
+
+Listens a TCP port, accepts redis-like ascii commands.
