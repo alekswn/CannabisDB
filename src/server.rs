@@ -8,7 +8,7 @@ use std::io::{BufWriter, BufReader, BufRead};
 use std::rc::Rc;
 use std::env;
 use std::net::SocketAddr;
-use std::fs::{File, OpenOptions};
+use std::fs::{OpenOptions};
 use std::io::Write;
 
 use futures::prelude::*;
@@ -112,7 +112,11 @@ fn init_database(persist_path: String) -> Rc<Database> {
         map: RefCell::new(HashMap::new()),
         persist_log:  persist_path,
     });
-    let reader = BufReader::new(File::open(ret.persist_log.clone()).expect("Unable to open persist logi file"));
+    let reader = BufReader::new(OpenOptions::new()
+            .read(true)
+            .write(true)
+            .create(true)
+            .open(ret.persist_log.clone()).expect("Unable to open persist logi file"));
     for line in reader.lines() {
         let response = ret.process_line(&line.unwrap(), false);
         println!("{}", response.serialize());
